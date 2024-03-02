@@ -238,7 +238,9 @@ class PipeDataParallelTopology(ProcessTopology):
     """
 
     def __init__(self, num_pp, num_dp):
-        super().__init__(axes=['pipe', 'data'], dims=[num_pp, num_dp])
+        print("Use intra-node PP and inter-node DP")
+        super().__init__(axes=['data', 'pipe'], dims=[num_dp, num_pp])  # TODO PP intra-node, DP inter-node
+        # super().__init__(axes=['pipe', 'data'], dims=[num_pp, num_dp])
 
 
 class PipeModelDataParallelTopology(ProcessTopology):
